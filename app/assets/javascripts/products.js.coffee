@@ -53,7 +53,8 @@ $("#prueba").tagsInput
   height: "40px"
   defaultText: ""
   onAddTag: onAddTag
-  onRemoveTag: onRemoveTag		
+  onRemoveTag: onRemoveTag
+  defaultText: "Agregue"	
   )
 
 Array::remove = ->

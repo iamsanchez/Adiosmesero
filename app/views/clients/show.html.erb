@@ -72,7 +72,7 @@
       <% @client.Orders.each do |orden|%>
       <% @producto = Product.find(orden.Product_id)%>
       <% @temp = orden.Clients %>
-      <%@subtotal+= (@producto.Price/(1+@producto.Tax/100))/@temp.size%>
+      <%@subtotal = (@producto.Price/(1+@producto.Tax/100))/@temp.size%>
       <tr>
         <td><%=@producto.Name%></td>
         <td style="text-align:right;"><%= number_to_currency(@subtotal, unit: "L. ", precision: 2) %></td>
@@ -95,7 +95,7 @@
         <td>
           <strong>Subtotal</strong></td>
         <td style="text-align:right;">
-          <%=number_to_currency(@subtotal, unit: "L. ", precision: 2) %>
+          <%=number_to_currency(@Total, unit: "L. ", precision: 2) %>
         </td>
       </tr>
       <tr>

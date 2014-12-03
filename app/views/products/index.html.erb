@@ -96,8 +96,8 @@
  
  <h2 id = "texto">Vacio</h2>
   <div>
-    <p class= "lead" id = "precio">Vacio</p>  
-    <p class="lead">El plato lo ordenará (en caso de que exista mas de un nombre, se asumirá que compartirán el plato)</p>
+    <h3 class= "lead" id = "precio">Vacio</h3>  
+    <h6 class="lead">El plato lo ordenará (en caso de que exista mas de un nombre, se asumirá que compartirán el plato)</h6>
   </div>
 
 
@@ -129,7 +129,7 @@
 Escriba el nombre de la persona seguido de la tecla Enter
   <a href="#" class="close">&times;</a>
 </div>
-<%= text_field_tag "prueba" %>
+<%= text_field_tag "prueba",nil, placeholder:"hola" %>
 </div>
 <div class ="field">
 <%@clientes.each do |cliente| %>  

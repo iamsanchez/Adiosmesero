@@ -42,11 +42,11 @@ class OrdersController < ApplicationController
         @temp = Client.where("Name = ? AND bill_id = ? ",nombre,session[:bill_id]).first
         @totalprevio = @temp.Total
         @isvprevio = @temp.ISV
-        @temp.Total= @totalprevio + @producto.Price
+        @temp.Total= @totalprevio + @subtotal
         @temp.ISV= @isvprevio + @ISVneto
         @temp.save
       else
-        @nuevo = Client.new(Name: nombre,ISV: @ISVneto, Total: @subtotal+@ISVneto, bill_id: session[:bill_id])
+        @nuevo = Client.new(Name: nombre,ISV: @ISVneto, Total: @subtotal, bill_id: session[:bill_id])
         @nuevo.save
       end 
     end
