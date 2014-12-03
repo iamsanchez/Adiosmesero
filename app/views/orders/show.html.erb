@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+<% @products.each do |product| %>
+    <%if product.id == @order.Product_id%>
+      <%= product.Name %>
+    <% end %>
+  <% end %>
+</p>
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

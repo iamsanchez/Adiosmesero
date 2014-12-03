@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @product.Name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.Description %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @product.Image %>
+  <%= image_tag @product.Image_url %>
+
+</p>
+
+<p>
+  <strong>Tax:</strong>
+  <%= @product.Tax %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @product.Price %>
+</p>
+
+<strong>Categoria </strong>
+ <% @categories.each do |category| %>
+    <%if category.id == @product.Category_id%>
+      <%= category.Name %>
+    <% end %>
+  <% end %>
+
+<br>
+
+
+<%= link_to 'Editar', edit_product_path(@product) %> |
+<%= link_to 'Atrás', products_path %>

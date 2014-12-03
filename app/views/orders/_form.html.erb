@@ -1,0 +1,28 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class ="field">
+  <%= f.label :Producto %><br>
+    <% options = options_from_collection_for_select(@products, 'id', 'Name') %>
+    <%= f.select :Product_id,  options %>
+</div>
+
+<div class = "field">
+<%= f.label :Clientes %>
+<%= select_tag "Clientes_que_ordenan", options_from_collection_for_select(Client.all, 'id', 'Name') %>
+</div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

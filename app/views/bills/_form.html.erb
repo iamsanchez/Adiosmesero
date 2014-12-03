@@ -1,0 +1,36 @@
+<%= form_for(@bill) do |f| %>
+  <% if @bill.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bill.errors.count, "error") %> prohibited this bill from being saved:</h2>
+
+      <ul>
+      <% @bill.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <%= f.fields_for :Client do |builder| %>
+  <div class="field">
+    <%= builder.label :Name, "Nombre" %><br>
+    <%= builder.text_field :Name %>
+  </div>
+  <div class="field">
+    <%= hidden_field_tag(:ISV, 0) %>
+    
+  </div>
+  <div class="field">
+    
+    <%= hidden_field_tag(:Total, 0) %>
+  </div>
+
+
+  <% end %>
+
+
+
+  <div class="actions">
+    <%= f.submit class: "button" %>
+  </div>
+<% end %>
