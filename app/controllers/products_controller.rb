@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  respond_to :json
 
   # GET /products
   # GET /products.json
@@ -9,12 +10,22 @@ class ProductsController < ApplicationController
     @bill = Bill.find(session[:bill_id])
     @order = Order.new
     @clientes = Client.where("bill_id = ?",session[:bill_id])
+
+    render json: @products
+  end
+
+  def as_json(options={})
+    super(:only => [:Name, :Description, :Price])
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
-        @categories = Category.all;
+        #@categories = Category.all;
+    @product = Product.find params[:id]
+    render json: @product.as_json()
+    #respond_to do |format|
+    #format.json { render json: @product }
   end
 
   # GET /products/new

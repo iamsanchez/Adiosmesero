@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  respond_to :json
 
   # GET /categories
   # GET /categories.json
@@ -10,6 +11,9 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+     @Category = Category.find params[:id]
+     @products = Product.where("Category_id = ?",@Category.id)
+     render json: @products
   end
 
   # GET /categories/new
