@@ -13,7 +13,7 @@ class CategoriesController < ApplicationController
   def show
      @Category = Category.find params[:id]
      @products = Product.where("Category_id = ?",@Category.id)
-     render json: @products
+     render json: @products.as_json()
   end
 
   # GET /categories/new

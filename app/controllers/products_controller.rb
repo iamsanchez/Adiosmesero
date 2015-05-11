@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     @categories = Category.all;
-    @bill = Bill.find(session[:bill_id])
+    #@bill = Bill.find(session[:bill_id])
     @order = Order.new
     @clientes = Client.where("bill_id = ?",session[:bill_id])
 
