@@ -5,10 +5,11 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-   # @products = Product.order("Category_id ASC")
+    # @products = Product.order("Category_id ASC")
   @ja = Product.find_by_sql("SELECT * FROM products
-  INNER JOIN categories ON products.Category_id = categories.id
-  ORDER BY products.Category_id asc")
+  INNER JOIN categories ON products.'Category_id' = categories.id
+  ORDER BY products.'Category_id' asc")
+
 
 
 
