@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     # @products = Product.order("Category_id ASC")
    @ja = Product.find_by_sql('SELECT * FROM products
   INNER JOIN categories ON products."Category_id" = categories.id
-  ORDER BY products."Category_id" asc'))
+  ORDER BY products."Category_id" asc')
 
 
 
