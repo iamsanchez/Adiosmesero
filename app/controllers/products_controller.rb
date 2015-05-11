@@ -6,12 +6,18 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.order("Category_id ASC")
+  @ja = Product.find_by_sql("SELECT * FROM products
+  INNER JOIN categories ON products.Category_id = categories.id
+  ORDER BY products.Category_id asc")
+
+
+
     #@categories = Category.all
     #@bill = Bill.find(session[:bill_id])
     #@order = Order.new
     #@clientes = Client.where("bill_id = ?",session[:bill_id])
 
-    render json: @products
+    render json: @ja
   end
 
   def as_json(options={})
