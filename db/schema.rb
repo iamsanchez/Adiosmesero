@@ -62,11 +62,11 @@ ActiveRecord::Schema.define(version: 20141119011231) do
     t.string   "Image"
     t.float    "Tax"
     t.float    "Price"
-    t.integer  "Category_id"
+    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "products", ["Category_id"], name: "index_products_on_Category_id"
+  add_index "products", ["category_id"], name: "index_products_on_category_id"
 
 end
