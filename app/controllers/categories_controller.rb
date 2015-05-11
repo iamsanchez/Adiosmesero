@@ -6,13 +6,14 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @categories = Category.all
+    render json: @categories
   end
 
   # GET /categories/1
   # GET /categories/1.json
   def show
      @Category = Category.find params[:id]
-     @products = Product.where("Category_id = ?",@Category.id)
+     @products = Product.where("Category_id = ?",:id)
      render json: @products.as_json()
   end
 
