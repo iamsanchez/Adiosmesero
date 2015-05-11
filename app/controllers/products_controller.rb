@@ -5,7 +5,8 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.order("Category_id").order("Price")
+    @products = Product.order("Category_id")
+    @products = @products.order("Price")
     #@categories = Category.all
     #@bill = Bill.find(session[:bill_id])
     #@order = Order.new
