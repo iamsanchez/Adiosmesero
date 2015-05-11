@@ -15,5 +15,3 @@
 //= require turbolinks
 //= require jquery.tagsinput
 //= require_tree .
-
-//$(document).foundation();
