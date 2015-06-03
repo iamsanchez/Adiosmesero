@@ -12,9 +12,15 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
-     @Category = Category.find params[:id]
-     @products = Product.where("Category_id = ?",:id)
-     render json: @products.as_json()
+     # @Category = Category.find params[:id]
+     # @products = Product.where("Category_id = ?",:id)
+     # @soy = :id 
+     @ja = Product.find_by_sql('SELECT products.id, products."Name", products."Description",products."Price", categories.id as CID, categories."Name" as CategoryName FROM products 
+    INNER JOIN categories ON products."Category_id" = categories.id
+    WHERE categories.id = ?
+    ORDER BY products."Category_id", products."Price"', :id)
+     
+     render json: @ja.as_json()
   end
 
   # GET /categories/new
