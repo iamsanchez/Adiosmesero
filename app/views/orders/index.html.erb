@@ -11,14 +11,14 @@
   </thead>
 
   <tbody>
-    <% @orders.each do |order| %>
-      <tr>
         <td><p>
             <% @products.each do |product| %>
                   <%= product.Name %>
                   <%= product.Image_url %>
               <% end %>
             </p>
+    <% @orders.each do |order| %>
+      <tr>
         </td>
         <td><%= link_to 'Show', order %></td>
         <td><%= link_to 'Edit', edit_order_path(order) %></td>
