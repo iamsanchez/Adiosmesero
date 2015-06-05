@@ -15,9 +15,8 @@
       <tr>
         <td><p>
             <% @products.each do |product| %>
-                <%if product.id == order.Product_id%>
                   <%= product.Name %>
-                <% end %>
+                  <%= product.Image_url %>
               <% end %>
             </p>
         </td>
