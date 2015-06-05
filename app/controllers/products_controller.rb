@@ -2,13 +2,17 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   respond_to :json
 
+  def default_serializer_options
+      {root: false}
+    end
   # GET /products
   # GET /products.json
   def index
     # @products = Product.order("Category_id ASC")
-   @ja = Product.find_by_sql('SELECT * FROM products 
-  INNER JOIN categories ON products."Category_id" = categories.id
-  ORDER BY products."Category_id", products."Price"')
+  
+  # @ja = Product.find_by_sql('SELECT * FROM products 
+  #INNER JOIN categories ON products."Category_id" = categories.id
+  #ORDER BY products."Category_id", products."Price"')
 
 
 
@@ -18,7 +22,7 @@ class ProductsController < ApplicationController
     #@order = Order.new
     #@clientes = Client.where("bill_id = ?",session[:bill_id])
 
-    render json: @ja
+    render json: Product.all
   end
 
   def as_json(options={})
@@ -29,8 +33,8 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
         #@categories = Category.all;
-    @product = Product.find params[:id]
-    render json: @product.as_json()
+    @product = Product.find(:id)
+    render json: @product
     #respond_to do |format|
     #format.json { render json: @product }
   end
