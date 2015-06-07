@@ -74,15 +74,15 @@ class ProductsController < ApplicationController
 
   def entrada 
   # 5 entrada, 6 Plato, 7 Postre
-  render json: Product.where("'Category_id' = ?", 5.to_i)
+  render json: Product.where("'Category_id' = ?", '5'.to_i)
   end
 
-  def plato
-  render json: Product.where("'Category_id' = ?", 6.to_i)
+  def plato 
+  render json: Product.where(Category_id: 6)
   end
 
-  def postre
-  render json: Product.where("'Category_id' = ?", 7.to_i)
+  def postre 
+  render json: Product.joins(:Categories).where(Category_id: 7)
   end
 
 
