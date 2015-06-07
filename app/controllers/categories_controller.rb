@@ -8,15 +8,15 @@ class CategoriesController < ApplicationController
 
   def entrada 
   # 5 entrada, 6 Plato, 7 Postre
-  render json: Product.where("category_id = ?", 5)
+  render json: Product.where("Category_id = ?", 5)
   end
 
   def plato
-  render json: Product.where("category_id = ?", 6)
+  render json: Product.where("Category_id = ?", 6)
   end
 
   def postre
-  render json: Product.where("category_id = ?", 7)
+  render json: Product.where("Category_id = ?", 7)
   end
 
 
