@@ -8,18 +8,18 @@ class CategoriesController < ApplicationController
 
   def entrada 
   # 5 entrada, 6 Plato, 7 Postre
-  render json: Product.find_by_sql('Select * from products
-                                    where products."Category_id" = ?', 5)
+  @ja = Product.find_by_sql('SELECT * FROM products WHERE products."Category_id" = ?', 5)
+  render json: @ja 
   end
 
   def plato
-  render json: Product.find_by_sql('Select * from products
-                                    where products."Category_id" = ?', 6)
+  render json: Product.find_by_sql('SELECT * FROM products
+                                    WHERE products."Category_id" = ?', 6)
   end
 
   def postre
-  render json: Product.find_by_sql('Select * from products
-                                    where products."Category_id" = ?', 7)
+  render json: Product.find_by_sql('SELECT * FROM products
+                                    WHERE products."Category_id" = ?', 7)
   end
 
 
