@@ -5,4 +5,4 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-	
+	#Product.create(Name: "Prueba Ultima", Description: "Soy una Description", Image: "http://www.schnauzi.com/wp-content/uploads/2014/06/gato-con-botas.jpg", Tax: "0.12", Price: "200.00",Category_id: 6)
