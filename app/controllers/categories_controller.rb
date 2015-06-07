@@ -2,24 +2,17 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
   respond_to :json
 
-  def default_serializer_options
-      {root: false}
-    end
-
   def entrada 
   # 5 entrada, 6 Plato, 7 Postre
-  @ja = Product.find_by_sql('SELECT * FROM products WHERE products."Category_id" = ?', 5)
-  render json: @ja 
+  Product.where("category_id = ?", 5)
   end
 
   def plato
-  render json: Product.find_by_sql('SELECT * FROM products
-                                    WHERE products."Category_id" = ?', 6)
+  Product.where("category_id = ?", 6)
   end
 
   def postre
-  render json: Product.find_by_sql('SELECT * FROM products
-                                    WHERE products."Category_id" = ?', 7)
+  Product.where("category_id = ?", 7)
   end
 
 
