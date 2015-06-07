@@ -21,6 +21,12 @@ Snusnu::Application.routes.draw do
   get 'categoria/plato' => 'categories#plato'
   get 'categoria/postre' => 'categories#postre'
   get 'categoria/bebida' => 'categories#bebida'
+
+  get 'producto/entrada' => 'products#entrada'
+  get 'producto/plato' => 'products#plato'
+  get 'producto/postre' => 'products#postre'
+  get 'producto/bebida' => 'products#bebida'
+
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
