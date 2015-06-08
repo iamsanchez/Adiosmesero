@@ -17,10 +17,10 @@ Snusnu::Application.routes.draw do
 
   resources :categories
 
-  get 'categoria/entrada' => 'categories#entrada'
-  get 'categoria/plato' => 'categories#plato'
-  get 'categoria/postre' => 'categories#postre'
-  get 'categoria/bebida' => 'categories#bebida'
+  #get 'categoria/entrada' => 'categories#entrada'
+  #get 'categoria/plato' => 'categories#plato'
+  #get 'categoria/postre' => 'categories#postre'
+  #get 'categoria/bebida' => 'categories#bebida'
 
   get 'producto/entrada' => 'products#entrada'
   get 'producto/plato' => 'products#plato'

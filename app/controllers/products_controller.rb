@@ -33,7 +33,7 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
         #@categories = Category.all;
-    @product = Product.find(:id)
+    @product = Product.find(params[:id])
     render json: @product
     #respond_to do |format|
     #format.json { render json: @product }
