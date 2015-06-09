@@ -41,21 +41,24 @@ class OrdersController < ApplicationController
     @Arreglo.each do |nombre|
       puts nombre
     end
+   @tamylyn = Client.find_by_sql("SELECT * FROM clients
+   WHERE clients.'Name' = ? AND clients.'bill_id' = ?",nombre,params[:bill_id])
+
     @producto = Product.find(params[:Product_id])
     @ISV= (@producto.Tax/100)
     @cantidadclientes = @Arreglo.size
     @subtotal= (@producto.Price)/@cantidadclientes
     @ISVneto= (@producto.Price-(@producto.Price/(1+@ISV)))/@cantidadclientes
     @Arreglo.each do |nombre|
-      if (Client.where("Name = ? AND bill_id = ? ",nombre,params[:bill_id]).exists?)
-        @temp = Client.where("Name = ? AND bill_id = ? ",nombre,params[:bill_id]).first
+      if (@tamylyn.exists?)
+        @temp = @tamylyn.first
         @totalprevio = @temp.Total
         @isvprevio = @temp.ISV
         @temp.Total= @totalprevio + @subtotal
         @temp.ISV= @isvprevio + @ISVneto
         @temp.save
       else
-        @nuevo = Client.new(Name: nombre,ISV: @ISVneto, Total: @subtotal, bill_id: params[:bill_id])
+        @nuevo = Client.create(Name: nombre,ISV: @ISVneto, Total: @subtotal, bill_id: params[:bill_id])
         @nuevo.save
       end 
     end
