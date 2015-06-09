@@ -49,7 +49,13 @@ class OrdersController < ApplicationController
     @ISVneto= (@producto.Price-(@producto.Price/(1+@ISV)))/@cantidadclientes
     @Arreglo.each do |nombre|
     @tamylyn = Client.find_by_sql(['SELECT * FROM clients WHERE bill_id = ? AND "Name" = ?',params[:bill_id],nombre])
-      if (@tamylyn.empty?)
+      puts "busco"
+      puts nombre
+      puts "tamylyn"
+      puts @tamylyn
+      puts "primero"
+      puts @tamylyn.first
+      if (!@tamylyn.empty?)
         @temp = @tamylyn.first
         @totalprevio = @temp[4]
         @isvprevio = @temp[3]
