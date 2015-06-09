@@ -56,7 +56,7 @@ class OrdersController < ApplicationController
       puts @tamylyn
       puts "primero"
       puts @tamylyn.first
-      if (@tamylyn.empty?)
+      if (!@tamylyn.empty?)
         puts "entre"
         @temp = @tamylyn.first
         @totalprevio = @temp[4]
@@ -73,18 +73,22 @@ class OrdersController < ApplicationController
     end
     
     @cliente =Client.where(bill_id: params[:bill_id],:Name => @Arreglo)
+    puts "sigo"
     @order.Clients << @cliente
+    puts "vivo"
     @actual = Bill.find(params[:bill_id])
+    puts "por"
     @actual.Orders << @order
-    respond_to do |format|
-      if @order.save
-        render json: @order
-      else
-       render json:  @order.errors, status: :unprocessable_entity
-       # format.html { render action: 'new' }
-        #format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
+    puts "aqui"
+    
+    if @order.save
+      render json: @order
+    else
+     render json:  @order.errors, status: :unprocessable_entity
+     # format.html { render action: 'new' }
+      #format.json { render json: @order.errors, status: :unprocessable_entity }
     end
+    
 
 
   end
