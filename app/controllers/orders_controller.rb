@@ -60,9 +60,9 @@ class OrdersController < ApplicationController
     @actual.Orders << @order
     respond_to do |format|
       if @order.save
-        render json: status: 'ok'
+        render json: @order
       else
-       render json: status: 'nyet'
+       render json:  @order.errors, status: :unprocessable_entity
        # format.html { render action: 'new' }
         #format.json { render json: @order.errors, status: :unprocessable_entity }
       end
