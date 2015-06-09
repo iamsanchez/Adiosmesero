@@ -1,6 +1,12 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
+  respond_to :json
+
+  def default_serializer_options
+      {root: false}
+  end
+
   # GET /orders
   # GET /orders.json
   def index
@@ -29,6 +35,7 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
+
     @order= Order.new(order_params)
     @Nombres = params[:Intentemos]
     @Arreglo = @Nombres.split(",")

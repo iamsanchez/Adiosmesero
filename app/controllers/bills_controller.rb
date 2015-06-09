@@ -1,5 +1,18 @@
 class BillsController < ApplicationController
   before_action :set_bill, only: [:show, :edit, :update, :destroy]
+   
+  respond_to :json
+
+  def default_serializer_options
+      {root: false}
+  end
+
+
+  def creation
+    @bill = Bill.new
+    if @bill.save
+      render json: @bill
+  end
 
   # GET /bills
   # GET /bills.json
