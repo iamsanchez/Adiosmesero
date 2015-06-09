@@ -21,8 +21,9 @@ Snusnu::Application.routes.draw do
   #get 'categoria/plato' => 'categories#plato'
   #get 'categoria/postre' => 'categories#postre'
   #get 'categoria/bebida' => 'categories#bebida'
+  match 'create/order', to: 'orders#dame', via: [:post]
   get 'giff/bill' => 'bills#creation'
-  get 'create/order' => 'orders#dame'
+ # get 'create/order' => 'orders#dame'
   get 'producto/entrada' => 'products#entrada'
   get 'producto/plato' => 'products#plato'
   get 'producto/postre' => 'products#postre'
