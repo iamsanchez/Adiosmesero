@@ -61,7 +61,9 @@ class OrdersController < ApplicationController
         @temp = @tamylyn.first
         @totalprevio = @temp[4]
         @isvprevio = @temp[3]
-        @cliente = Client.find(@temp[0])
+        puts "0"
+        puts @temp[0]
+        @cliente = Client.find(@temp[0].to_i)
         @cliente.Total = @totalprevio + @subtotal
         @cliente.ISV = @isvprevio + @ISVneto
         @cliente.save
