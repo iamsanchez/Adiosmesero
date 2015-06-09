@@ -51,10 +51,6 @@ class OrdersController < ApplicationController
     @tamylyn = Client.find_by_sql(['SELECT * FROM clients WHERE bill_id = ? AND "Name" = ?',params[:bill_id],nombre])
       if (@tamylyn.empty?)
         @temp = @tamylyn.first
-        @temp.each do |soy|
-          puts "soy"
-          puts soy
-        end
         @totalprevio = @temp[4]
         @isvprevio = @temp[3]
         @cliente = Client.find(@temp[0])
