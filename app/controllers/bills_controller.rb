@@ -12,6 +12,7 @@ class BillsController < ApplicationController
     @bill = Bill.new
     if @bill.save
       render json: @bill
+    end  
   end
 
   # GET /bills
