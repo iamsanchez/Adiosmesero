@@ -75,7 +75,7 @@ class OrdersController < ApplicationController
     @actual.Orders << @order
     respond_to do |format|
       if @order.save
-        render json: @order
+        render json: status: :ok
       else
        render json:  @order.errors, status: :unprocessable_entity
        # format.html { render action: 'new' }
