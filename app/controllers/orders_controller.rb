@@ -41,8 +41,8 @@ class OrdersController < ApplicationController
     @Arreglo.each do |nombre|
       puts nombre
     end
-   @tamylyn = Client.find_by_sql("SELECT * FROM clients
-   WHERE clients.'Name' = ? AND clients.'bill_id' = ?",nombre,params[:bill_id])
+   #@tamylyn = Client.find_by_sql("SELECT * FROM clients
+   #WHERE clients.'Name' = ? AND clients.'bill_id' = ?",nombre,params[:bill_id])
 
     @producto = Product.find(params[:Product_id])
     @ISV= (@producto.Tax/100)
