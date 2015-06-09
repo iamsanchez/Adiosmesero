@@ -33,9 +33,11 @@ class OrdersController < ApplicationController
   end
 
   def dame
+    Rails.logger.debug params.inspect
+    puts params.inspect
     @order = Order.create(Product_id: :Product_id)
     @Arreglo = params[:clientes]
-    @producto = Product.find(@order.Product_id)
+    @producto = Product.find(:Product_id)
     @ISV= (@producto.Tax/100)
     @cantidadclientes = @Arreglo.size
     @subtotal= (@producto.Price)/@cantidadclientes
