@@ -51,11 +51,16 @@ class OrdersController < ApplicationController
     @tamylyn = Client.find_by_sql(['SELECT * FROM clients WHERE bill_id = ? AND "Name" = ?',params[:bill_id],nombre])
       if (@tamylyn.empty?)
         @temp = @tamylyn.first
-        @totalprevio = @temp.Total
-        @isvprevio = @temp.ISV
-        @temp.Total= @totalprevio + @subtotal
-        @temp.ISV= @isvprevio + @ISVneto
-        @temp.save
+        @temp.each do |soy|
+          puts "soy"
+          puts soy
+        end
+        @totalprevio = @temp[4]
+        @isvprevio = @temp[3]
+        @cliente = Client.find(@temp[0])
+        @cliente.Total = @totalprevio + @subtotal
+        @cliente.ISV = @isvprevio + @ISVneto
+        @cliente.save
       else
         @nuevo = Client.create(Name: nombre,ISV: @ISVneto, Total: @subtotal, bill_id: params[:bill_id])
         @nuevo.save
