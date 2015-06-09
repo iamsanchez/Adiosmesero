@@ -48,8 +48,7 @@ class OrdersController < ApplicationController
     @subtotal= (@producto.Price)/@cantidadclientes
     @ISVneto= (@producto.Price-(@producto.Price/(1+@ISV)))/@cantidadclientes
     @Arreglo.each do |nombre|
-      @tamylyn = Client.find_by_sql("SELECT * FROM clients
-       WHERE clients.'Name' = ? AND clients.'bill_id' = ?",nombre,params[:bill_id])
+      @tamylyn = Client.find_by_sql(['SELECT * FROM clients WHERE bill_id = ? AND "Name" = ?',params[:bill_id],nombre)
       if (@tamylyn.exists?)
         @temp = @tamylyn.first
         @totalprevio = @temp.Total
