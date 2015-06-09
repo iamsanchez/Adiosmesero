@@ -56,6 +56,8 @@ class OrdersController < ApplicationController
       puts @tamylyn
       puts "primero"
       puts @tamylyn.first
+      puts "nombre de "
+      puts @tamylin.Name
       if (!@tamylyn.empty?)
         puts "entre"
         @temp = @tamylyn.first
