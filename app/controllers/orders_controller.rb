@@ -105,6 +105,7 @@ class OrdersController < ApplicationController
     @client_id = params[:client_id]
     @Cliente = Client.find_by_sql(['SELECT * FROM clients WHERE bill_id = ? AND "id" = ?',@bill_id,@client_id])
     @Ordenes = Array.new
+    @Cliente = @Cliente.first
     @Cliente.Orders.each do |orden|
       @producto = Product.find(orden.Product_id)
       @temp = orden.Clients
