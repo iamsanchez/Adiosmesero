@@ -47,6 +47,9 @@ class OrdersController < ApplicationController
     @cantidadclientes = @Arreglo.size
     @subtotal= (@producto.Price)/@cantidadclientes
     @ISVneto= (@producto.Price-(@producto.Price/(1+@ISV)))/@cantidadclientes
+    puts params[:bill_id]
+    puts "soy un bill"
+  
     @Arreglo.each do |nombre|
     @tamylyn = Client.find_by_sql(['SELECT * FROM clients WHERE bill_id = ? AND "Name" = ?',params[:bill_id],nombre])
       @el = @tamylyn.first
