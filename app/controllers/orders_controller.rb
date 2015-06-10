@@ -49,7 +49,7 @@ class OrdersController < ApplicationController
     @ISVneto= (@producto.Price-(@producto.Price/(1+@ISV)))/@cantidadclientes
     puts params[:bill_id]
     puts "soy un bill"
-  
+
     @Arreglo.each do |nombre|
     @tamylyn = Client.find_by_sql(['SELECT * FROM clients WHERE bill_id = ? AND "Name" = ?',params[:bill_id],nombre])
       @el = @tamylyn.first
@@ -60,7 +60,7 @@ class OrdersController < ApplicationController
       puts "primero"
       
       puts "nombre de "
-      puts @el.Name
+  
       if (!@tamylyn.empty?)
         puts "entre"
         @temp = @tamylyn.first
