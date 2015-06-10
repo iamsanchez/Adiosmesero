@@ -27,7 +27,7 @@ class BillsController < ApplicationController
   # GET /bills/1.json
   def show
 
-    @Cliente = Client.where("'bill_id'", :id)
+    @Cliente = Client.where(bill_id: :id)
 #    @Cliente = Client.find_by_sql(['SELECT * FROM clients WHERE bill_id = ?',:id])
     render json: @Cliente
   end
