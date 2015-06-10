@@ -100,6 +100,23 @@ class OrdersController < ApplicationController
 
   end
 
+  def porCliente
+    @bill_id = params[:bill_id]
+    @client_id = params[:client_id]
+    @Cliente = Client.find_by_sql(['SELECT * FROM clients WHERE bill_id = ? AND "id" = ?',@bill_id,@client_id])
+    @Ordenes = Array.new
+    @Cliente.Orders.each do |orden|
+      @producto = Product.find(orden.Product_id)
+      @temp = orden.Clients
+      @Tax = (@producto.Price-(@producto.Price/(1+@producto.Tax)))/@temp.size
+      @Price = @producto.Price/@temp.size
+      @Ordenes << {:Nombre => producto.Name, :Precio => @Price}
+    end 
+    @subtotal = @Total - @Total*0.15
+    @final = { :Ordenes => @Ordenes, :Subtotal => @subtotal, :Total => @Total, :ISV => @ISV  }.to_json
+    render json: @final
+  end
+
 
   # POST /orders
   # POST /orders.json

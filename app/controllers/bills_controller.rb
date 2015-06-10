@@ -8,6 +8,7 @@ class BillsController < ApplicationController
   end
 
 
+
   def creation
     @bill = Bill.new
     if @bill.save
@@ -25,6 +26,8 @@ class BillsController < ApplicationController
   # GET /bills/1
   # GET /bills/1.json
   def show
+    @Cliente = Client.find_by_sql(['SELECT * FROM clients WHERE bill_id = ?',:id])
+    render json: @Cliente
   end
 
   # GET /bills/new
