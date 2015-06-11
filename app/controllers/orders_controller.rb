@@ -110,7 +110,7 @@ class OrdersController < ApplicationController
       @producto = Product.find(orden.Product_id)
       @temp = orden.Clients
       @Tax = (@producto.Price-(@producto.Price/(1+@producto.Tax)))/@temp.size
-      @Price = @producto.Price/@temp.size
+      @Price = (@producto.Price-@Tax)/@temp.size
       @Ordenes << {:Nombre => @producto.Name, :Precio => @Price}
     end 
     @Total = @Cliente.Total
