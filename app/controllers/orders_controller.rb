@@ -114,7 +114,7 @@ class OrdersController < ApplicationController
       @Ordenes << {:Nombre => @producto.Name, :Precio => @Price}
     end 
     @Total = @Cliente.Total
-    @ISV = @Cliente.ISV
+    @ISV = @Total*0.15
     @subtotal = @Total - @Total*0.15
     @final = { :Ordenes => @Ordenes, :Subtotal => @subtotal, :Total => @Total, :ISV => @ISV  }.to_json
     render json: @final
