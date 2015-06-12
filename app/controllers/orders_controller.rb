@@ -100,6 +100,8 @@ class OrdersController < ApplicationController
 
   end
 
+  number_to_currency()
+
   def porCliente
     @bill_id = params[:bill_id]
     @client_id = params[:client_id]
@@ -109,7 +111,7 @@ class OrdersController < ApplicationController
     @Cliente.Orders.each do |orden|
       @producto = Product.find(orden.Product_id)
       @temp = orden.Clients
-      @Tax = (@producto.Price-(@producto.Price/(1+@producto.Tax)))/@temp.size
+      @Tax = @producto.Price*0.15
       @Price = (@producto.Price-@Tax)/@temp.size
       @Ordenes << {:Nombre => @producto.Name, :Precio => @Price}
     end 
