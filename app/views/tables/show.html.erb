@@ -1,39 +1,6 @@
 
-
- <nav class="top-bar docs-bar hide-for-small" data-topbar>
-  <ul class="title-area">
-    <li class="name">
-      <h1><%= link_to 'Menú', products_path %></h1>
-    </li>
-  </ul>
-
-
-  <section class="top-bar-section">
-    <ul class="left">
-      <li class="has-dropdown"><a href="#">Clientes</a>
-
-        <ul class="dropdown">
-          <li><label>Clientes en esta orden</label></li>
-          <%@clientes.each do |cliente| %>
-          <li><%= link_to cliente.Name + number_to_currency(cliente.Total, unit: "L. ", precision: 2), cliente %></li>
-          <li class="divider"></li>    
-          <%end%>
-        </ul>
-      </li>
-      
-    </ul>
-    <!-- Right Nav Section -->
-    <ul class="right">
-      <li class="active"><a href="#">Pagar</a></li>
-    </ul>
-
-
-  </section>
-
-
-
   
-</nav>
+
 <% @Total = 0 %>
 <div class = "row">
   <div class ="large-12 columns">
