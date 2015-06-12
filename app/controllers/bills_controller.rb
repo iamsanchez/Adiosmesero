@@ -28,6 +28,8 @@ class BillsController < ApplicationController
     @mesa.used = false  
     @bill.save
     @mesa.save
+    @bill.Tables << @mesa
+    @mesa.Bills << @bill
     render json: @bill
   end
 
