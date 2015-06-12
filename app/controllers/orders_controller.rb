@@ -100,8 +100,7 @@ class OrdersController < ApplicationController
 
   end
 
-  number_to_currency()
-
+  
   def porCliente
     @bill_id = params[:bill_id]
     @client_id = params[:client_id]
@@ -113,12 +112,12 @@ class OrdersController < ApplicationController
       @temp = orden.Clients
       @Tax = @producto.Price*0.15
       @Price = (@producto.Price-@Tax)/@temp.size
-      @Ordenes << {:Nombre => @producto.Name, :Precio => @Price}
+      @Ordenes << {:Nombre => @producto.Name, :Precio => number_to_currency(@Price, unit: "L. ", precision: 2)}
     end 
     @Total = @Cliente.Total
     @ISV = @Total*0.15
     @subtotal = @Total - @Total*0.15
-    @final = { :Ordenes => @Ordenes, :Subtotal => @subtotal, :Total => @Total, :ISV => @ISV  }.to_json
+    @final = { :Ordenes => @Ordenes, :Subtotal => number_to_currency(@subtotal, unit: "L. ", precision: 2), :Total => number_to_currency(@Total, unit: "L. ", precision: 2), :ISV => number_to_currency(@ISV, unit: "L. ", precision: 2)}.to_json
     render json: @final
   end
 
