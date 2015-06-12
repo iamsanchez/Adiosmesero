@@ -7,7 +7,9 @@ class BillsController < ApplicationController
       {root: false}
   end
 
-
+  def maybelline
+    render json: Table.all
+  end
 
   def creation #Ocupo mesa_id
     @mesa = Table.find(params[:table_id])

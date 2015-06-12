@@ -28,6 +28,7 @@ Snusnu::Application.routes.draw do
   match 'cliente/bill', to: 'orders#porCliente', via: [:post] #para Ver la orden por cliente, recibo un bill id, y un client id
   match 'giff/bill', to: 'bills#creation', via: [:post] #Mandar table_id genera bill_id
   match 'pay/bill', to: 'bills#pay', via: [:post] #mandar el table_id y bill_id a pagar
+  get 'table/lyn' => 'bills#maybelline'
   # get 'create/order' => 'orders#dame'
   get 'producto/entrada' => 'products#entrada'
   get 'producto/plato' => 'products#plato'
