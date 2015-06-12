@@ -12,6 +12,7 @@ class BillsController < ApplicationController
   def creation #Ocupo mesa_id
     @mesa = Table.find(params[:table_id])
     @mesa.used = true
+    @mesa.save
     @bill = Bill.new(paid: false)
     if @bill.save
       render json: @bill
