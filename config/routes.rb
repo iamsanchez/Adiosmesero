@@ -1,4 +1,6 @@
 Snusnu::Application.routes.draw do
+  resources :tables
+
   resources :mains
 
   resources :bills
