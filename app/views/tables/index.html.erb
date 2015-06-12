@@ -14,7 +14,7 @@
 
     <% @tables.each do |table| %>
       <tr>
-        <td><%= 'Mesa no. {{@tables.id}}' %></td>
+        <td><%= 'Mesa no. ' %><%=@table.id %></td>
         <% if table.used %>
           <td><%= 'En orden' %></td>
           <td><%= link_to 'Show', table %></td>
