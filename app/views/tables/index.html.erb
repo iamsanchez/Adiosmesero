@@ -14,11 +14,13 @@
 
     <% @tables.each do |table| %>
       <tr>
+        <td><%= 'Mesa no. {{@tables.id}}' %></td>
         <% if table.used %>
-        <td><%= 'En orden' %></td>
-        <td><%= link_to 'Show', table %></td>
+          <td><%= 'En orden' %></td>
+          <td><%= link_to 'Show', table %></td>
+        <% else %>
+          <td><%= 'Disponible' %></td>
         <% end %>
-
         </tr>
     <% end %>
   </tbody>

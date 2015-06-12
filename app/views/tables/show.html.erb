@@ -1,5 +1,29 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p>
 
+
+<p>Cliente: <%= cliente.Name %></p>
+For Each Client
+<table>
+	<thead>
+		<tr>
+			Producto:
+		</tr>
+		<tr>
+			ISV:
+		</tr>	
+		<tr>
+			Final:
+		</tr>
+	</thead>
+#For EACH Client.Order
+<tbody> 
+	<tr><%= @producto = Product.find(orden.Product_id)></tr>
+
+
+</tbody>
+
+
+</table>
 <p>
   <strong>In use:</strong>
   <%= @table.used %>
@@ -7,3 +31,132 @@
 
 <%= link_to 'Edit', edit_table_path(@table) %> |
 <%= link_to 'Back', tables_path %>
+ -->
+
+
+ <nav class="top-bar docs-bar hide-for-small" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+      <h1><%= link_to 'Menú', products_path %></h1>
+    </li>
+  </ul>
+
+
+  <section class="top-bar-section">
+    <ul class="left">
+      <li class="has-dropdown"><a href="#">Clientes</a>
+
+        <ul class="dropdown">
+          <li><label>Clientes en esta orden</label></li>
+          <%@clientes.each do |cliente| %>
+          <li><%= link_to cliente.Name + number_to_currency(cliente.Total, unit: "L. ", precision: 2), cliente %></li>
+          <li class="divider"></li>    
+          <%end%>
+        </ul>
+      </li>
+      
+    </ul>
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="active"><a href="#">Pagar</a></li>
+    </ul>
+
+
+  </section>
+
+
+
+  
+</nav>
+<% @Total = 0 %>
+<div class = "row">
+  <div class ="large-12 columns">
+    <h1 align = "center">Nombre del Restaurante</h1>
+  </div>
+
+<div class="large-12 columns">
+  <h4 align="center">RTN:08019000123456</h4>
+</div>
+
+  <div class="large-12 columns">
+    <br>
+  </div>
+
+  <div class ="large-8 columns" >
+    <h4 align="left" >Factura número <%=@bill.id %></h4>
+  </div> 
+
+
+  <div class ="large-4 columns" >
+    <h4 align="right">Fecha  <%= Time.now.strftime("%d/%m/%Y ") %></h4>
+  </div>
+  <div class ="large-12 columns" >  
+    <h4 align = "left">Nombre del Cliente: <%= @client.Name %></h2>
+  </div>
+ 
+  <div class= "large-12 columns">
+    <br>
+  </div>
+  <%@subtotal = 0 %>
+  <%@Total =0 %>
+  <table align="center", role="grid", width="600">
+    <thead>
+      <th>Concepto</th>
+      <th style="text-align:right;">Cantidad a pagar</th>
+    </thead>
+    <tbody>
+      <% @client.Orders.each do |orden|%>
+      <% @producto = Product.find(orden.Product_id)%>
+      <% @temp = orden.Clients %>
+      <%@subtotal = (@producto.Price/(1+@producto.Tax/100))/@temp.size%>
+      <tr>
+        <td><%=@producto.Name%></td>
+        <td style="text-align:right;"><%= number_to_currency(@subtotal, unit: "L. ", precision: 2) %></td>
+      </tr>
+        <% @Total +=@subtotal %>
+        <%end%>     
+        <tr>
+          <td>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          </td>
+          <td>
+          </td>
+        </tr>  
+      <tr>
+        <td>
+          <strong>Subtotal</strong></td>
+        <td style="text-align:right;">
+          <%=number_to_currency(@Total, unit: "L. ", precision: 2) %>
+        </td>
+      </tr>
+      <tr>
+        <td>  
+          <strong>Isv</strong>
+        </td>
+        <td style="text-align:right;">
+        <%= number_to_currency(@client.ISV, unit: "L. ", precision: 2) %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>Total</strong>
+        </td>
+        <td style="text-align:right;">
+          <%=   number_to_currency(@client.Total, unit: "L. ", precision: 2) %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+   
+
+  <br>
+  <br>
+
+<p align="center">¡La factura es beneficio de todos, exíjala!</p>

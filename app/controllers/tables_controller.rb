@@ -16,6 +16,11 @@ class TablesController < ApplicationController
   # GET /tables/1.json
   def show
     @table = @table.find(params[:id])
+    @bill =@table.Bills.where(paid: false).first
+    @clientes = Client.where(bill_id: @bill.id)
+
+
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @table }
