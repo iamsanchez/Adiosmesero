@@ -3,7 +3,7 @@
 <table>
   <thead>
     <tr>
-      <th>State</th>
+      <th>In use?</th>
       <th></th>
       <th></th>
       <th></th>
@@ -13,7 +13,7 @@
   <tbody>
     <% @tables.each do |table| %>
       <tr>
-        <td><%= table.state %></td>
+        <td><%= table.used %></td>
         <td><%= link_to 'Show', table %></td>
         <td><%= link_to 'Edit', edit_table_path(table) %></td>
         <td><%= link_to 'Destroy', table, method: :delete, data: { confirm: 'Are you sure?' } %></td>
