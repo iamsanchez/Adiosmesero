@@ -10,7 +10,7 @@ class BillsController < ApplicationController
 
 
   def creation
-    @bill = Bill.new
+    @bill = Bill.new(paid: false)
     if @bill.save
       render json: @bill
     end  

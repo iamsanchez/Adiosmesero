@@ -1,7 +1,7 @@
 class CreateTables < ActiveRecord::Migration
   def change
     create_table :tables do |t|
-      t.boolean :paid
+      t.boolean :used
 
       t.timestamps
     end
