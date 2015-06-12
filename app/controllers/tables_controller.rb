@@ -4,7 +4,7 @@ class TablesController < ApplicationController
   # GET /tables
   # GET /tables.json
   def index
-    @tables = Table.all
+    @tables = Table.order(created_at: :asc)
 
     respond_to do |format|
       format.html # index.html.erb
