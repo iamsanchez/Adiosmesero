@@ -1,3 +1,3 @@
 class BillSerializer < ActiveModel::Serializer
-  attributes :id, :state
+  attributes :id, :paid
 end

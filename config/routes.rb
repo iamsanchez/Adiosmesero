@@ -26,7 +26,7 @@ Snusnu::Application.routes.draw do
 
   match 'create/order', to: 'orders#dame', via: [:post] # Para crear la orden, Recibo una lista de clientes, un product id y un bill id
   match 'cliente/bill', to: 'orders#porCliente', via: [:post] #para Ver la orden por cliente, recibo un bill id, y un client id
-  get 'giff/bill' => 'bills#creation' #Para generar un bill,
+  match 'giff/bill', to: 'bills#creation', via [:post] #Para generar un bill,
  # get 'create/order' => 'orders#dame'
   get 'producto/entrada' => 'products#entrada'
   get 'producto/plato' => 'products#plato'

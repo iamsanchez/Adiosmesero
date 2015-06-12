@@ -9,11 +9,23 @@ class BillsController < ApplicationController
 
 
 
-  def creation
+  def creation #Ocupo mesa_id
+    @mesa = Table.where(table_id: params[:table_id])
+    @mesa.used = true
     @bill = Bill.new(paid: false)
     if @bill.save
       render json: @bill
     end  
+  end
+
+  def pay
+    @bill=Bill.where(bill_id: params[:bill_id])
+    @mesa=Table.where(table_id: params[:table_id])
+    @bill.paid = true
+    @mesa.used = false  
+    @bill.save
+    @mesa.save
+    return json: @bill
   end
 
   # GET /bills

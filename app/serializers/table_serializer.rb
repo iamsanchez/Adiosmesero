@@ -1,3 +1,3 @@
 class TableSerializer < ActiveModel::Serializer
-  attributes :id, :state
+  attributes :id, :used
 end
