@@ -25,7 +25,7 @@ class BillsController < ApplicationController
     @mesa.used = false  
     @bill.save
     @mesa.save
-    return json: @bill
+    render json: @bill
   end
 
   # GET /bills
