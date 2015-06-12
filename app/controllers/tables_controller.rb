@@ -15,7 +15,7 @@ class TablesController < ApplicationController
   # GET /tables/1
   # GET /tables/1.json
   def show
-    @table = @table.find(params[:id])
+    @table = Table.find(params[:id])
     @bill =@table.Bills.where(paid: false).first
     @clientes = Client.where(bill_id: @bill.id)
 
