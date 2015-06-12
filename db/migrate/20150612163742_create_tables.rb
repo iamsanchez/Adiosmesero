@@ -8,7 +8,7 @@ class CreateTables < ActiveRecord::Migration
 
     create_table :bills_tables, id: false do |t|
     	t.belongs_to :bill
-    	t.belongs_to :order
+    	t.belongs_to :table
     end
 
   end

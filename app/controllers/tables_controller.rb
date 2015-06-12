@@ -15,6 +15,8 @@ class TablesController < ApplicationController
   # GET /tables/1
   # GET /tables/1.json
   def show
+    @
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @table }
