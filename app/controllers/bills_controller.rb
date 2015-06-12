@@ -10,7 +10,7 @@ class BillsController < ApplicationController
 
 
   def creation #Ocupo mesa_id
-    @mesa = Table.where(table_id: params[:table_id])
+    @mesa = Table.where(table_id: params[:table_id]).first
     @mesa.used = true
     @bill = Bill.new(paid: false)
     if @bill.save
@@ -19,8 +19,8 @@ class BillsController < ApplicationController
   end
 
   def pay
-    @bill=Bill.where(bill_id: params[:bill_id])
-    @mesa=Table.where(table_id: params[:table_id])
+    @bill=Bill.where(bill_id: params[:bill_id]).first
+    @mesa=Table.where(table_id: params[:table_id]).first
     @bill.paid = true
     @mesa.used = false  
     @bill.save
