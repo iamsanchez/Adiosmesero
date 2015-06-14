@@ -16,6 +16,8 @@ class BillsController < ApplicationController
     @mesa.used = true
     @mesa.save
     @bill = Bill.new(paid: false)
+    @bill.Tables << @mesa
+    @mesa.Bills << @bill
     if @bill.save
       render json: @bill
     end  
@@ -28,8 +30,6 @@ class BillsController < ApplicationController
     @mesa.used = false  
     @bill.save
     @mesa.save
-    @bill.Tables << @mesa
-    @mesa.Bills << @bill
     render json: @bill
   end
 
@@ -45,6 +45,10 @@ class BillsController < ApplicationController
   def show
 
     @Cliente = Client.where(bill_id: params[:id])
+    @Cliente.each do |mitad|
+      mitad.ISV = mitad.ISV.round(2)
+      mitad.Total = mitad.Total.round(2)
+    end
 #    @Cliente = Client.find_by_sql(['SELECT * FROM clients WHERE bill_id = ?',:id])
     render json: @Cliente
   end
