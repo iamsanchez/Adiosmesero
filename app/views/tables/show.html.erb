@@ -1,4 +1,4 @@
-
+<% @Todos.each do |cliente|%>
   
 
 <% @Total = 0 %>
@@ -24,7 +24,7 @@
     <h4 align="right">Fecha  <%= Time.now.strftime("%d/%m/%Y ") %></h4>
   </div>
   <div class ="large-12 columns" >  
-    <h4 align = "left">Nombre del Cliente: <%= @client.Name %></h2>
+    <h4 align = "left">Nombre del Cliente: <%= cliente.Name %></h2>
   </div>
  
   <div class= "large-12 columns">
@@ -38,7 +38,7 @@
       <th style="text-align:right;">Cantidad a pagar</th>
     </thead>
     <tbody>
-      <% @client.Orders.each do |orden|%>
+      <% cliente.Orders.each do |orden|%>
       <% @producto = Product.find(orden.Product_id)%>
       <% @temp = orden.Clients %>
       <%@subtotal = (@producto.Price/(1+@producto.Tax/100))/@temp.size%>
@@ -72,7 +72,7 @@
           <strong>Isv</strong>
         </td>
         <td style="text-align:right;">
-        <%= number_to_currency(@client.ISV, unit: "L. ", precision: 2) %>
+        <%= number_to_currency(cliente.ISV, unit: "L. ", precision: 2) %>
         </td>
       </tr>
       <tr>
@@ -80,7 +80,7 @@
           <strong>Total</strong>
         </td>
         <td style="text-align:right;">
-          <%=   number_to_currency(@client.Total, unit: "L. ", precision: 2) %>
+          <%=   number_to_currency(cliente.Total, unit: "L. ", precision: 2) %>
         </td>
       </tr>
     </tbody>
@@ -93,3 +93,4 @@
   <br>
 
 <p align="center">¡La factura es beneficio de todos, exíjala!</p>
+<% end%>

@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
       {root: false}
   end
 
+  
   # GET /orders
   # GET /orders.json
   def index
@@ -112,12 +113,12 @@ class OrdersController < ApplicationController
       @temp = orden.Clients
       @Tax = @producto.Price*0.15
       @Price = (@producto.Price-@Tax)/@temp.size
-      @Ordenes << {:Nombre => @producto.Name, :Precio => number_to_currency(@Price, unit: "L. ", precision: 2)}
+      @Ordenes << {:Nombre => @producto.Name, :Precio => @Price.round}
     end 
     @Total = @Cliente.Total
     @ISV = @Total*0.15
     @subtotal = @Total - @Total*0.15
-    @final = { :Ordenes => @Ordenes, :Subtotal => number_to_currency(@subtotal, unit: "L. ", precision: 2), :Total => number_to_currency(@Total, unit: "L. ", precision: 2), :ISV => number_to_currency(@ISV, unit: "L. ", precision: 2)}.to_json
+    @final = { :Ordenes => @Ordenes, :Subtotal => @subtotal.round, :Total => @Total.round :ISV =>@ISV.round}.to_json
     render json: @final
   end
 

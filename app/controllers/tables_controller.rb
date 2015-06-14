@@ -17,7 +17,7 @@ class TablesController < ApplicationController
   def show
     @table = Table.find(params[:id])
     @bill =@table.Bills.where(paid: false).first
-    @clientes = Client.where(bill_id: @bill.id)
+    @Todos = Client.where(bill_id: @bill.id)
 
 
 
