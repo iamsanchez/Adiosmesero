@@ -121,7 +121,7 @@ class OrdersController < ApplicationController
     @Total = @Total.round(2)
     @ISV = @ISV.round(2)
     @subtotal = @subtotal.round(2)
-    @final = { :Ordenes => @Ordenes, :Subtotal => @subtotal, :Total => @Total :ISV =>@ISV}.to_json
+    @final = { :Ordenes => @Ordenes, :Subtotal => @subtotal, :Total => @Total, :ISV =>@ISV}.to_json
     render json: @final
   end
 
