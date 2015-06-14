@@ -118,7 +118,10 @@ class OrdersController < ApplicationController
     @Total = @Cliente.Total
     @ISV = @Total*0.15
     @subtotal = @Total - @Total*0.15
-    @final = { :Ordenes => @Ordenes, :Subtotal => @subtotal.round, :Total => @Total.round :ISV =>@ISV.round}.to_json
+    @Total = @Total.round(2)
+    @ISV = @ISV.round(2)
+    @subtotal = @subtotal.round(2)
+    @final = { :Ordenes => @Ordenes, :Subtotal => @subtotal, :Total => @Total :ISV =>@ISV}.to_json
     render json: @final
   end
 
