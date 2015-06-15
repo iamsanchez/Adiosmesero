@@ -15,12 +15,12 @@ class BillsController < ApplicationController
     @mesa = Table.find(params[:table_id])
     @mesa.used = true
     @bill = Bill.new(paid: false)
+    @bill.save
+    @mesa.save
     @bill.Tables << @mesa
     @mesa.Bills << @bill
-    @mesa.save
-    if @bill.save
       render json: @bill
-    end  
+    
   end
 
   def pay
