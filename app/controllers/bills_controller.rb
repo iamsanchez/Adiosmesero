@@ -28,8 +28,8 @@ class BillsController < ApplicationController
     @mesa=Table.find(params[:table_id])
     @bill.paid = true
     @mesa.used = false  
-    @bill.mesa
-    @save.save
+    @bill.save
+    @mesa.save
     render json: @bill
   end
 
