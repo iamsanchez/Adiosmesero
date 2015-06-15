@@ -14,10 +14,10 @@ class BillsController < ApplicationController
   def creation #Ocupo mesa_id
     @mesa = Table.find(params[:table_id])
     @mesa.used = true
-    @mesa.save
     @bill = Bill.new(paid: false)
     @bill.Tables << @mesa
     @mesa.Bills << @bill
+    @mesa.save
     if @bill.save
       render json: @bill
     end  
@@ -28,8 +28,8 @@ class BillsController < ApplicationController
     @mesa=Table.find(params[:table_id])
     @bill.paid = true
     @mesa.used = false  
-    @bill.save
-    @mesa.save
+    @bill.mesa
+    @save.save
     render json: @bill
   end
 
