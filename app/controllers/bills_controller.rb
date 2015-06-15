@@ -17,7 +17,7 @@ class BillsController < ApplicationController
     @bill = Bill.new(paid: false)
     @bill.save
     @mesa.save
-    @bill.Tables << @mesa
+    @bill.tables << @mesa
     @mesa.Bills << @bill
       render json: @bill
     
