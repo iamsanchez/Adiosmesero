@@ -8,7 +8,8 @@ class BillsController < ApplicationController
   end
 
   def maybelline
-    render json: Table.all
+    @tables = Table.order(id: :asc)
+    render json: @tables
   end
 
   def creation #Ocupo mesa_id
